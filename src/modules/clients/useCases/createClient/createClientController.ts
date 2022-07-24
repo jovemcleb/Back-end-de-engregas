@@ -1,4 +1,4 @@
-import { Request, response, Response } from "express";
+import { Request, Response } from "express";
 import { CreateClientUseCase } from "./createClientUseCase";
 
 export class CreateClientController {
@@ -11,6 +11,6 @@ export class CreateClientController {
       password,
     });
 
-    return response.json(result);
+    return res.json(result);
   }
 }
