@@ -1,4 +1,4 @@
-import { prisma } from "../../../database/prismaClient";
+import { prisma } from "../../../../database/prismaClient";
 import { hash } from "bcrypt";
 
 interface ICreateClient {
@@ -20,11 +20,13 @@ export class CreateClientUseCase {
 
     const hashPassword = await hash(password, 10);
 
-    await prisma.clients.create({
+    const client = await prisma.clients.create({
       data: {
         username,
         password: hashPassword,
       },
     });
+
+    return client;
   }
 }
